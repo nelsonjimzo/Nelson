@@ -2,9 +2,7 @@
 
 class ModeloCobroMatricula
 {
-/*=============================================
-  MOSTRAR ALUMNOS
-=============================================*/
+/*=============================================     MOSTRAR ALUMNOS     =============================================*/
   static public function MdlMostrarCobroMatricula($tabla, $item, $valor)
   {
     if($item != null)
@@ -24,18 +22,21 @@ class ModeloCobroMatricula
     $stmt = null;
   }
 
-  /*=============================================
-  REGISTRO COBRO DE MATRICULA
-  =============================================*/
+  /*=============================================     REGISTRO COBRO DE MATRICULA       =============================================*/
 
   static public function mdlIngresarMatriculaCobrada($tabla, $datos)
   {
     $stmt = ConexionBD::Abrir_Conexion()->prepare("INSERT INTO  $tabla 
-                                                                (TotalMatricula)
-                                                        VALUES  (:totalmatricula1)");
-
-    $stmt->bindParam(":totalmatricula1", $datos["TotalMatricula"], PDO::PARAM_STR);
-
+                                                                ( Id_Cobro,
+                                                                  Id_Alumno,
+                                                                  TotalMatricula    )
+                                                        VALUES  ( :IdCobro,
+                                                                  :IdAlumno,
+                                                                  :totalmatricula1  )");
+    $stmt->bindParam(":IdCobro",          $datos["Id_cobro"],       PDO::PARAM_STR);
+    $stmt->bindParam(":IdAlumno",         $datos["Id_Alumno"],      PDO::PARAM_STR);
+    $stmt->bindParam(":totalmatricula1",  $datos["TotalMatricula"], PDO::PARAM_STR);
+    
     if($stmt->execute())
     {
       return "ok";

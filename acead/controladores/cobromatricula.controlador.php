@@ -9,8 +9,8 @@ class ControladorCobroMatricula
 
   static public function ctrMostrarCobroMatricula($item, $valor)
   {
-    $tabla = "tbl_alumnos";
-    $respuesta = ModeloCobroMatricula::MdlMostrarCobroMatricula($tabla, $item, $valor);
+    $tabla 		= "tbl_alumnos";
+    $respuesta 	= ModeloCobroMatricula::MdlMostrarCobroMatricula($tabla, $item, $valor);
     return $respuesta;
   }
 
@@ -26,7 +26,9 @@ class ControladorCobroMatricula
 			{
 				$tabla = "tbl_cobromatricula";
 				$datos = array("TotalMatricula" => strtoupper($_POST["nuevoTotalMatricula"]));
-				$respuesta = ModeloCobroMatricula::mdlCobroMatricula($tabla, $datos);
+				//$respuesta = ModeloCobroMatricula::mdlCobroMatricula($tabla, $datos);
+				$respuesta = ModeloCobroMatricula::mdlIngresarMatriculaCobrada($tabla, $datos);
+				//cambio de mdl
 				if($respuesta == "ok")
 				{
 					echo '<script>

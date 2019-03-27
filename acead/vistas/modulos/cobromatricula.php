@@ -1,108 +1,97 @@
 <div class="content-wrapper">
   <section class="content-header">
-    <h1>
-      Administrar Cobros de Matrícula
-    </h1>
-
+    <h1>      Administrar Cobros de matrícula     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
       <li class="active">Cobros</li>
     </ol>
   </section>
 
-  <!-- FORMULARIO DE MODALIDADES -->
+  <!-- FORMULARIO DE ALUMNOS PARA COBRO -->
   <section class="content" style="width:550px">
     <div class="box">
 
-      <!-- BOTON AGREGAR MODALIDAD -->
+      <!-- BOTON AGREGAR MODALIDAD      -->
         <div class="box-header with-border">
-              <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarModalidad">
-                Agregar Modalidades
-              </button>
+             <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarModalidad">
+               Mostrar el alumno para agregar cobro de matricula 
+              </button>  -->
 
             </div>
               <div class="box-body">
                 <table class="table table-bordered table-striped dt-responsive tablas">
                   <thead>
                    <tr>
-                     <th style="width:10px">#</th>
-                     <th style="width:10px">Id Alumno</th>
-                     <th>Nombre del Alumno</th>
-                     <th>Apellido del Alumno</th>
-                     <th>Acciones</th>
+                     <th style="width:10px">
+                          #</th>
+                     <th style="width:10px">
+                          Id Alumno</th>
+                     <th> Nombre del Alumno</th>
+                     <th> Apellido del Alumno</th>
+                     <th> Acciones</th>
                    </tr>
                   </thead>
 
                   <tbody>
+                      
                       <?php
-                      $item = null;
-                      $valor = null;
+                      $item           = null;
+                      $valor          = null;
                       $cobromatricula = ControladorCobroMatricula::ctrMostrarCobroMatricula($item, $valor);
 
-                     foreach ($cobromatricula as $key => $value){
-
+                     foreach ($cobromatricula as $key => $value)
+                     {
                         echo ' <tr>
-                                <td>'.($key+1).'</td>
-                                <td>'.$value["Id_Alumno"].'</td>
-                                <td>'.$value["PrimerNombre"].'</td>
-                               
+                                <td>'.($key+1)                .'</td>
+                                <td>'.$value["Id_Alumno"]     .'</td>
+                                <td>'.$value["PrimerNombre"]  .'</td>
+                                <td>'.$value["PrimerApellido"].'</td>
                                 <td>
-
                                   <div class="btn-group">
-
-                                    <button class="btn btn-warning btnCobroMatricula" idAlumno="'.$value["Id_Alumno"].'" data-toggle="modal" data-target="#modalEditarCobroMatricula"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-danger btnEliminarModalidad" idModalidad="'.$value["Id_Modalidad"].'"><i class="fa fa-times"></i></button>
-
-
+                                    <button class       ="btn btn-warning btnCobroMatricula" 
+                                            idAlumno    ="'.$value["Id_Alumno"].'" 
+                                            data-toggle ="modal"
+                                            data-target ="#modalEditarCobroMatricula">
+                                            <i class="fa fa-pencil"></i>
+                                    </button>
                                   </div>
-
                                 </td>
-
                               </tr>';
                       }
-
-
                       ?>
 
-
                   </tbody>
-
                 </table>
-
               </div>
-
               <!-- /.content -->
     </div>
-
     <!-- /.box -->
-
   </section>
-
 
 <!--=====================================
 MODAL AGREGAR MODALIDAD
-======================================-->
+======================================
 
-<<div id="modalAgregarModalidad" class="modal fade" role="dialog">
+<div id="modalAgregarModalidad" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data">    -->
 
         <!--=====================================
         CABEZA DEL MODAL
-        ======================================-->
+        ======================================
         <div class="modal-header" style="background:#3c8dbc; color:white">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Agregar Modalidad</h4>
-        </div>
+        </div>      -->
 
         <!--=====================================
         CUERPO DEL MODAL
-        ======================================-->
+        ======================================
 
         <div class="modal-body">
-          <div class="box-body">
-            <!-- ENTRADA PARA EL NOMBRE DE LA MODALIDAD -->
+          <div class="box-body">      -->
+            <!-- ENTRADA PARA EL NOMBRE DE LA MODALIDAD 
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -110,90 +99,110 @@ MODAL AGREGAR MODALIDAD
               </div>
             </div>
            </div>
-         </div>
+         </div>   -->
 
         <!--=====================================
         PIE DEL MODAL
-        ======================================-->
+        ======================================
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
           <button type="submit" class="btn btn-primary">Guardar Modalidad</button>
-        </div>
+        </div>    -->
 
         <?php
-          $crearModalidad = new ControladorModalidades();
-          $crearModalidad -> ctrCrearModalidad();
+          //$crearModalidad = new ControladorModalidades();
+          //$crearModalidad -> ctrCrearModalidad();
         ?>
 
 
         <?php
-          $borrarModalidad = new ControladorModalidades();
-          $borrarModalidad -> ctrBorrarModalidad();
+          //$borrarModalidad = new ControladorModalidades();
+          //$borrarModalidad -> ctrBorrarModalidad();
         ?>
-
+<!--
       </form>
     </div>
   </div>
 </div>
+-->
 
-<!--=====================================
-MODAL COBRO MATRICULA
-======================================-->
-<div id="modalEditarModalidad" class="modal fade" role="dialog">
+<!--===================================== MODAL COBRO MATRICULA ======================================-->
+<div id="modalEditarCobroMatricula" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <form role="form" method="post" enctype="multipart/form-data">
-        <!--=====================================
-        CABEZA DEL MODAL
-        ======================================-->
+        <!--=====================================       CABEZA DEL MODAL     ======================================-->
         <div class="modal-header" style="background:#f39c12; color:white">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Cobro de matrícula</h4>
         </div>
-        <!--=====================================
-        CUERPO DEL MODAL
-        ======================================-->
+        <!--=====================================   CUERPO DEL MODAL PARA MOSTRAR EL COBRO     ======================================-->
         <div class="modal-body">
           <div class="box-body">
+
             <!-- ID DE ALUMNO -->
              <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-id-badge"></i></span>
-                  <input type="text" class="form-control input-lg" id="editarIdAlumno" name="editarIdAlumno" readonly value="">
+                  <input  type=   "text" 
+                          class=  "form-control input-lg" 
+                          id=     "editarIdAlumno" 
+                          name=   "editarIdAlumno" 
+                          readonly value="">
                 </div>
               </div>
-            <!-- ENTRADA PARA EL COBRO -->
+
+               <!-- ENTRADA PARA EL PRIMER NOMBRE -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="editarCobro" id="editarCobro" value="" pattern="|^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]*$|" style="text-transform: uppercase" maxlength="40" required>
+                <input  type=   "text" 
+                        class=  "form-control input-lg" 
+                        name=   "nuevoNombre1" 
+                        id=     "nuevoNombre1" 
+                        style=  "text-transform: uppercase" readonly value="">
+              </div>
+            </div>
+
+            <!-- ENTRADA PARA EL COBRO -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                <input  type=   "text" 
+                        class=        "form-control input-lg" 
+                        name=         "editarCobro" 
+                        id=           "editarCobro" 
+                        value=        "" 
+                        placeholder=  "300"
+                        pattern=      "|^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]*$|" 
+                        style=        "text-transform: uppercase" 
+                        maxlength=    "40" required>
               </div>
             </div>
           </div>
-
-        <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
+        <!--===================================== PIE DEL MODAL    ======================================-->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
           <button type="submit" class="btn btn-primary">Agregar Cobro</button>
         </div>
 
         <?php
-          $editarModalidad = new ControladorModalidades();
-          $editarModalidad -> ctrEditarModalidad();
+          //$editarModalidad = new ControladorModalidades();
+          $editarCobroMatricula = new ControladorCobroMatricula();
+          //$editarModalidad -> ctrEditarModalidad();
+          $editarCobroMatricula -> ctrCrearCobroMatricula();
         ?>
-
+<script src="../acead/vistas/js/cobromatricula.js"></script>
          </form>
         </div>
       </div>
      </div>
     </div>
 
-  <!-- FORMULARIO DE CLASES -->
+  <!-- FORMULARIO DE CLASES 
   <section class="content" style="width:550px">
-    <div class="box">
-      <!-- BOTON AGREGAR MODALIDAD -->
+    <div class="box">   -->
+      <!-- BOTON AGREGAR MODALIDAD 
         <div class="box-header with-border">
               <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarClases">
                 Agregar Clases
@@ -211,9 +220,10 @@ MODAL COBRO MATRICULA
                      <th>Acciones</th>
                    </tr>
                   </thead>
-                  <tbody>
+                  <tbody>-->
 
                       <?php
+                      /*
                       $item = null;
                       $valor = null;
                       $clases = ControladorClases::ctrMostrarClases($item, $valor);
@@ -243,26 +253,27 @@ MODAL COBRO MATRICULA
                       }
 
 
-                      ?>
+                      */?>
 
 
-                  </tbody>
+              <!--    </tbody>
 
                 </table>
 
               </div>
 
-              <!-- /.content -->
-    </div>
+               /.content -->
+   <!-- </div>
 
-    <!-- /.box -->
+     /.box 
 
-  </section>
+  </section>-->
+
 
 
 <!--=====================================
 MODAL AGREGAR MODALIDAD
-======================================-->
+======================================
 
 <div id="modalAgregarClases" class="modal fade" role="dialog">
 
@@ -270,11 +281,11 @@ MODAL AGREGAR MODALIDAD
 
     <div class="modal-content">
 
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data">-->
 
         <!--=====================================
         CABEZA DEL MODAL
-        ======================================-->
+        ======================================
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
 
@@ -282,17 +293,17 @@ MODAL AGREGAR MODALIDAD
 
           <h4 class="modal-title">Agregar Clase</h4>
 
-        </div>
+        </div> -->
 
         <!--=====================================
         CUERPO DEL MODAL
-        ======================================-->
+        ======================================
 
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body">-->
 
-            <!-- ENTRADA PARA EL NOMBRE DE LA CLASE -->
+            <!-- ENTRADA PARA EL NOMBRE DE LA CLASE 
 
             <div class="form-group">
 
@@ -304,9 +315,9 @@ MODAL AGREGAR MODALIDAD
 
               </div>
 
-            </div>
+            </div>-->
 
-            <!-- ENTRADA PARA LA DURACIÓN DE LA CLASE -->
+            <!-- ENTRADA PARA LA DURACIÓN DE LA CLASE 
 
             <div class="form-group">
 
@@ -322,12 +333,12 @@ MODAL AGREGAR MODALIDAD
 
            </div>
 
-         </div>
+         </div>   -->
 
 
         <!--=====================================
         PIE DEL MODAL
-        ======================================-->
+        ======================================
 
         <div class="modal-footer">
 
@@ -335,16 +346,16 @@ MODAL AGREGAR MODALIDAD
 
           <button type="submit" class="btn btn-primary">Guardar Clase</button>
 
-        </div>
+        </div>-->
 
         <?php
 
-          $crearClase = new ControladorClases();
-          $crearClase -> ctrCrearClases();
+          //$crearClase = new ControladorClases();
+          //$crearClase -> ctrCrearClases();
 
         ?>
 
-
+<!--
       </form>
 
     </div>
@@ -353,9 +364,9 @@ MODAL AGREGAR MODALIDAD
 
 </div>
 
-<!--=====================================
+=====================================
 MODAL EDITAR MODALIDAD
-======================================-->
+======================================
 
 <div id="modalEditarModalidad" class="modal fade" role="dialog">
 
@@ -363,11 +374,11 @@ MODAL EDITAR MODALIDAD
 
     <div class="modal-content">
 
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data"> -->
 
         <!--=====================================
         CABEZA DEL MODAL
-        ======================================-->
+        ======================================
 
         <div class="modal-header" style="background:#f39c12; color:white">
 
@@ -375,18 +386,18 @@ MODAL EDITAR MODALIDAD
 
           <h4 class="modal-title">Editar Modalidad</h4>
 
-        </div>
+        </div>-->
 
         <!--=====================================
         CUERPO DEL MODAL
-        ======================================-->
+        ======================================
 
         <div class="modal-body">
 
           <div class="box-body">
 
-
-            <!-- ID DE MODALIDAD -->
+-->
+            <!-- ID DE MODALIDAD 
 
              <div class="form-group">
 
@@ -400,9 +411,9 @@ MODAL EDITAR MODALIDAD
 
                 </div>
 
-              </div>
+              </div>-->
 
-            <!-- ENTRADA PARA EL NOMBRE -->
+            <!-- ENTRADA PARA EL NOMBRE 
 
             <div class="form-group">
 
@@ -414,12 +425,12 @@ MODAL EDITAR MODALIDAD
 
               </div>
 
-            </div>
+            </div>-->
 
 
         <!--=====================================
         PIE DEL MODAL
-        ======================================-->
+        ======================================
 
         <div class="modal-footer">
 
@@ -427,17 +438,16 @@ MODAL EDITAR MODALIDAD
 
           <button type="submit" class="btn btn-primary">Modificar usuario</button>
 
-        </div>
+        </div>-->
 
         <?php
 
-          $editarUsuario = new ControladorUsuarios();
-          $editarUsuario -> ctrEditarUsuario();
+          //$editarUsuario = new ControladorUsuarios();
+          //$editarUsuario -> ctrEditarUsuario();
 
         ?>
 
-      </form>
+     <!-- </form>
       </div>
     </div>
-  </div>
-<script src="../acead/vistas/js/cobromatricula.js"></script>
+  </div>-->
