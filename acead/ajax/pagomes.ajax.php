@@ -4,7 +4,7 @@ require_once "../controladores/pagomes.controlador.php";
 require_once "../modelos/pagomes.modelo.php";
 
 /* =============================================
-  EDITAR ALUMNO
+  REGISTRO DE PAGO DE MENSUALIDAD
   ============================================= */
 if (isset($_POST["idAlumno"])) {
 
@@ -17,12 +17,11 @@ class AjaxAlumnos
 {
     /* =============================================      EDITAR ALUMNOS      ============================================= */
     public $idAlumno;
-    public function ajaxEditarAlumno() 
+    public function ajaxEditarAlumno()
     {
-        //echo "<script type='text/javascript'>alert('ajax')</script>";
         $item = "Id_Alumno";
         $valor = $this->idAlumno;
-        //$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+      
         $respuesta = ControladorAlumnos::ctrMostrarAlumnos($item, $valor);
         echo json_encode($respuesta);
     }

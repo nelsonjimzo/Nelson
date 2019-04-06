@@ -1,10 +1,10 @@
 <div class="content-wrapper">
-  
+
   <section class="content-header">
-    <h1>      Administrar Alumnos    </h1>    
+    <h1>      PAGO DE MENSUALIDAD   </h1>
     <ol class="breadcrumb">
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-      <li class="active">Administrar Alumnos</li>
+      <li class="active">Administrar Pagos de Mensualdiad</li>
     </ol>
   </section>
 
@@ -29,7 +29,7 @@
         <?php
         $item = null;
         $valor = null;
-        $alumnos = ControladorPagomes::ctrMostrarAlumnosPagomes($item, $valor);        
+        $alumnos = ControladorPagomes::ctrMostrarAlumnosPagomes($item, $valor);
        foreach ($alumnos as $key => $value)
        {
          echo ' <tr>
@@ -42,15 +42,8 @@
                      ';
                  echo '  <td>
                     <div class="btn-group">
-                    <button class=        "btn btn-warning btnEditarAlumno" 
-                            idAlumno=     "'.$value["Id_Alumno"].'" 
-                            data-toggle=  "modal" 
-                            data-target=  "#modalPagoMensual">
-                            <i class="fa fa-pencil"></i></button>
-
-                    <button class=    "btn btn-danger btnEliminarAlumno" 
-                            idAlumno= "'.$value["Id_Alumno"].'">
-                            <i class= "fa fa-times"></i></button>
+                    <button class= "btn btn-warning btnAgregarPagoMensual" idAlumno= "'.$value["Id_Alumno"].'" data-toggle=  "modal" data-target=  "#modalPagoMensual"><i class="fa fa-money"></i></button>
+                    <button class=    "btn btn-danger btnEliminarAlumno" idAlumno= "'.$value["Id_Alumno"].'"><i class= "fa fa-times"></i></button>
                     </div>
                   </td>
                 </tr>';
@@ -60,7 +53,7 @@
         </tbody>
        </table>
       </div>
-    
+
     </div>
   </section>
 </div>
@@ -83,7 +76,7 @@ MODAL EDITAR ALUMNO
         ======================================-->
         <div class="modal-header" style="background:#f39c12; color:white">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Editar Alumno</h4>
+          <h4 class="modal-title">Agregar Pago Mensual</h4>
         </div>
 
         <!--=====================================
@@ -105,7 +98,7 @@ MODAL EDITAR ALUMNO
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="editarNombre1" id="editarNombre1" value="" pattern="|^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]*$|" style="text-transform: uppercase" required>
+                <input type="text" class="form-control input-lg" name="editarNombre1" id="editarNombre1" value=""  style="text-transform: uppercase" readonly value="">
               </div>
             </div>
 
@@ -113,74 +106,47 @@ MODAL EDITAR ALUMNO
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="editarApellido1" id="editarApellido1" value="" pattern="|^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]*$|" style="text-transform: uppercase" required>
+                <input type="text" class="form-control input-lg" name="editarApellido1" id="editarApellido1" value="" style="text-transform: uppercase" readonly value="">
               </div>
             </div>
 
 
-<!-- () ENTRADA PARA EL DESCUENTO 
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                <select 
-                  class=  "form-control input-lg" 
-                  name=   "nuevoDescuento"  
-                  onchange="mostrarValor(this.options[this.selectedIndex].innerHTML); mostrarValor2(this.value); mostrarValor2( this.value);"  >
-                  <option value="">Seleccionar Tipo de descuento</option>
-                  <?php
-                  /*
-                  $descuento = ControladorAlumnos::ctrCargarSelectDescuento();
-                  foreach ($descuento as $key => $value) 
-                  {
-                    echo 
-                    "<option  id=     '1nuevoDescuento' 
-                              name=   '1nuevoDescuento' 
-                              value=  '".$value['ValorDesc']."' >".$value['Descuento']. "</option>";
-                  } */   
-                  ?>
-                </select>
-              </div>
-            </div>-->
-            <div class="form-group">
-               <div class="input-group">
-                 <span class="input-group-addon"><i class="fa fa-id-badge"></i></span>
-                   <input type="text" class="form-control input-lg" id="editarDescuento" name="editarDescuento" readonly value="">
-                </div>
-             </div>
+<!-- () ENTRADA PARA EL DESCUENTO -->
 
-<!-- ::::::::::::: -->
             <div class="form-group">
+
               <div class="input-group">
-                <script>
-                var mostrarValor = function(x)
-                  {
-                    document.getElementById('2nuevoDescuento').value=x;
+
+                <span class="input-group-addon"><i class="fa fa-money"></i></span>
+
+                <select class="form-control input-lg" name="nuevoDescuento">
+
+                  <option value="">Seleccionar Tipo de descuento</option>
+
+                  <?php
+
+                  $descuento = ControladorAlumnos::ctrCargarSelectDescuento();
+                  foreach ($descuento as $key => $value) {
+                    echo "<option value='".$value['Id_Descuento']."'>".$value['Descuento']."</option>";
                   }
-                var mostrarValor2 = function(x)
-                  {
-                    document.getElementById('2nuevoDescuento').value=x;
-                  }
-                </script>
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input  type="text" 
-                        class="form-control input-lg" 
-                        name="2nuevoDescuento" 
-                        id="2nuevoDescuento" 
-                        value="" 
-                        onChange="multiplicar();">
+                  ?>
+
+                </select>
+
               </div>
+
             </div>
 
 <!-- ENTRADA PARA EL VALOR A COBRAR -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                <input  type="text" 
-                        class="form-control input-lg" 
-                        name="nuevoCobroMensual" 
-                        id="nuevoCobroMensual" 
-                        value="" 
-                        onChange="multiplicar();" 
+                <input  type="text"
+                        class="form-control input-lg"
+                        name="nuevoCobroMensual"
+                        id="nuevoCobroMensual"
+                        value=""
+                        onChange="multiplicar();"
                         placeholder="800">
 
                 </div>
@@ -190,10 +156,10 @@ MODAL EDITAR ALUMNO
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-square"></i></span>
-                <input  type="text" 
-                        class="form-control input-lg" 
-                        name="2nuevoCobroMensual" 
-                        id="2nuevoCobroMensual" 
+                <input  type="text"
+                        class="form-control input-lg"
+                        name="2nuevoCobroMensual"
+                        id="2nuevoCobroMensual"
                         value="" >
                 <script src="http://code.jquery.com/jquery-1.0.4.js"></script>
                 <script>
@@ -237,24 +203,24 @@ MODAL EDITAR ALUMNO
 
                 $i = null;
                 $v = null;
-                $a = ControladorPagomes::ctrCargarMatricula($i, $v); 
+                $a = ControladorPagomes::ctrCargarMatricula($i, $v);
                   foreach ($a as $key => $val)
-               {        $a = $val["Id_cobro"];            }  
+               {        $a = $val["Id_cobro"];            }
                 var_dump($a);
                 ?>
-                <input type="text" class="form-control input-lg" name="idcobromatri" id="idcobromatri" 
+                <input type="text" class="form-control input-lg" name="idcobromatri" id="idcobromatri"
                 value="<?php echo $a; ?>"  placeholder="intro id cobro">
               </div>
-            </div>  
+            </div>
 <!--(6 - Id_precio) ENTRADA PARA EL ID PRECIO -->
             <div class="form-group">
               <div class="input-group">
                  <?php
                 $ip = null;
                 $vp = null;
-                $ap = ControladorPagomes::ctrCargarPrecio($ip, $vp); 
+                $ap = ControladorPagomes::ctrCargarPrecio($ip, $vp);
                   foreach ($ap as $key => $valp)
-                 {        $ap = $valp[0];            }  
+                 {        $ap = $valp[0];            }
                 ?>
                 <input type="text" class="form-control input-lg" name="regidprecio" id="regidprecio" value="<?php echo $ap; ?>"  placeholder="intro id precio">
               </div>
@@ -264,34 +230,34 @@ MODAL EDITAR ALUMNO
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                <select 
-                  class=  "form-control input-lg" 
+                <select
+                  class=  "form-control input-lg"
                   name=   "regidestado"  >
                   <option value="">Seleccionar nuevo estado</option>
                     <?php
                     $ie = null;
                     $ve = null;
-                    $ae = ControladorPagomes::ctrCargarEstadoPago($ie, $ve); 
+                    $ae = ControladorPagomes::ctrCargarEstadoPago($ie, $ve);
                       foreach ($ae as $key => $vale)
-                     {  echo 
-                        "<option  id=     'regidestado' 
-                                  name=   'regidestado' 
+                     {  echo
+                        "<option  id=     'regidestado'
+                                  name=   'regidestado'
                                   value=  '".$vale['Id_Estado']."' >".$vale['Descripcion']. "</option>";
-                      }    
+                      }
                   ?>
                 </select>
               </div>
             </div>
 
-<!--(8 - Id_Matricula) ENTRADA PARA EL ID_Matricula -->            
+<!--(8 - Id_Matricula) ENTRADA PARA EL ID_Matricula -->
             <div class="form-group">
               <div class="input-group">
                 <?php
                 $im = null;
                 $vm = null;
-                $am = ControladorPagomes::ctrCargarMatriculado($im, $vm); 
+                $am = ControladorPagomes::ctrCargarMatriculado($im, $vm);
                   foreach ($am as $key => $valm)
-                 {        $am = $valm['Id_Matricula'];            }  
+                 {        $am = $valm['Id_Matricula'];            }
                 ?>
                 <input type="text" class="form-control input-lg" name="regidmatri" id="regidmatri" value="<?php echo $am; ?>"  placeholder="intro id matricula">
               </div>
@@ -303,15 +269,15 @@ MODAL EDITAR ALUMNO
                 <?php
                 $id = null;
                 $vd = null;
-                $ad = ControladorPagomes::ctrCargarSelectDescuento($id, $vd); 
+                $ad = ControladorPagomes::ctrCargarSelectDescuento($id, $vd);
                   foreach ($ad as $key => $vald)
-                 {        $ad = $vald['Id_Descuento'];            }  
+                 {        $ad = $vald['Id_Descuento'];            }
                 ?>
                 <input type="text" class="form-control input-lg" name="regiddesc" id="regiddesc" value="<?php echo $ad; ?>"  placeholder="intro id descuento">
               </div>
             </div>
 
-          
+
  </div>
 </div>
 
@@ -325,9 +291,9 @@ MODAL EDITAR ALUMNO
           //$editarAlumno -> ctrEditarPagomes();
           $editarAlumno = new ControladorPagomes();
           $editarAlumno -> ctrIngresoPagomes();
-        
+
         ?>
-      
+
       </form>
     </div>
   </div>

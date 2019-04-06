@@ -30,27 +30,27 @@ class ModeloPagomes
 
 	static public function mdlIngresarPagomes($tabla, $datos)
 	{
-		$stmt = ConexionBD::Abrir_Conexion()->prepare("INSERT INTO $tabla 
-								(	PrimerNombre, 
-									SegundoNombre, 
-									PrimerApellido, 
-									SegundoApellido, 
-									FechaNacimiento, 
-									CorreoElectronico, 
-									Telefono, Cedula,  
-									Id_estadocivil, 
-									Id_genero, 
+		$stmt = ConexionBD::Abrir_Conexion()->prepare("INSERT INTO $tabla
+								(	PrimerNombre,
+									SegundoNombre,
+									PrimerApellido,
+									SegundoApellido,
+									FechaNacimiento,
+									CorreoElectronico,
+									Telefono, Cedula,
+									Id_estadocivil,
+									Id_genero,
 									Id_Descuento)
-						VALUES (	:nombre1, 
-									:nombre2, 
-									:apellido1, 
-									:apellido2, 
-									:FechaNac, 
-									:email, 
-									:telefono, 
-									:cedula, 
-									:estcivil, 
-									:genero, 
+						VALUES (	:nombre1,
+									:nombre2,
+									:apellido1,
+									:apellido2,
+									:FechaNac,
+									:email,
+									:telefono,
+									:cedula,
+									:estcivil,
+									:genero,
 									:descuento)");
 
 		$stmt->bindParam(":nombre1", 	$datos["PrimerNombre"], 		PDO::PARAM_STR);
@@ -78,35 +78,22 @@ class ModeloPagomes
 	}*/
 
 	/*=============================================
-	EDITAR ALUMNO
+	EDITAR PAGO MES
 	=============================================*/
 
 	static public function mdlEditarAlumnoPagomes($tabla, $datos)
 	{
-		$stmt = ConexionBD::Abrir_Conexion()->prepare("UPDATE 	$tabla 
-														SET		PrimerNombre 		= :nombre1,
-                                                                SegundoNombre 		= :nombre2,
-                                                                PrimerApellido 		= :apellido1,
-                                                                SegundoApellido 	= :apellido2,
-																CorreoElectronico 	= :email,
-																Telefono 			= :telefono,
-                                                                Cedula 				= :cedula,
-                                                                Id_estadocivil 		= :estcivil,
-                                                                Id_genero 			= :genero,
-                                                                Id_Descuento		= :editarDescuento,
-                                                          WHERE Id_Alumno 			= :id"		);
+		$stmt = ConexionBD::Abrir_Conexion()->prepare("UPDATE $tabla SET PrimerNombre	= :nombre1,
+                                                                       PrimerApellido = :apellido1,
+                                                                       SegundoApellido = :apellido2,
+                                                                      Id_Descuento = :editarDescuento,
+                                                                      WHERE Id_Alumno 	= :id"		);
 
 		$stmt->bindParam(":id", 		$datos["Id_Alumno"], 		PDO::PARAM_STR);
 		$stmt->bindParam(":nombre1", 	$datos["PrimerNombre"], 	PDO::PARAM_STR);
-    	$stmt->bindParam(":nombre2", 	$datos["SegundoNombre"], 	PDO::PARAM_STR);
 		$stmt->bindParam(":apellido1", 	$datos["PrimerApellido"], 	PDO::PARAM_STR);
-   		$stmt->bindParam(":apellido2", 	$datos["SegundoApellido"], 	PDO::PARAM_STR);
-		$stmt->bindParam(":email", 		$datos["CorreoElectronico"],PDO::PARAM_STR);
-		$stmt->bindParam(":telefono", 	$datos["Telefono"], 		PDO::PARAM_STR);
-		$stmt->bindParam(":cedula", 	$datos["Cedula"], 			PDO::PARAM_STR);
-    	$stmt->bindParam(":estcivil", 	$datos["Id_EstadoCivil"], 	PDO::PARAM_STR);
-    	$stmt->bindParam(":genero",		$datos["Id_Genero"], 		PDO::PARAM_STR);
-    	$stmt->bindParam(":editarDescuento",	$datos["Id_Descuento"], 	PDO::PARAM_STR);
+    $stmt->bindParam(":editarDescuento",	$datos["Id_Descuento"], 	PDO::PARAM_STR);
+
 		if($stmt -> execute())
 		{
 			return "ok";
@@ -123,27 +110,27 @@ class ModeloPagomes
 
 	static public function mdlPagomesIngreso($tabla, $datos)
 	{
-		$stmt = ConexionBD::Abrir_Conexion()->prepare("INSERT INTO $tabla 
-								(	PrimerNombre, 
-									SegundoNombre, 
-									PrimerApellido, 
-									SegundoApellido, 
-									FechaNacimiento, 
-									CorreoElectronico, 
-									Telefono, Cedula,  
-									Id_estadocivil, 
-									Id_genero, 
+		$stmt = ConexionBD::Abrir_Conexion()->prepare("INSERT INTO $tabla
+								(	PrimerNombre,
+									SegundoNombre,
+									PrimerApellido,
+									SegundoApellido,
+									FechaNacimiento,
+									CorreoElectronico,
+									Telefono, Cedula,
+									Id_estadocivil,
+									Id_genero,
 									Id_Descuento)
-						VALUES (	:nombre1, 
-									:nombre2, 
-									:apellido1, 
-									:apellido2, 
-									:FechaNac, 
-									:email, 
-									:telefono, 
-									:cedula, 
-									:estcivil, 
-									:genero, 
+						VALUES (	:nombre1,
+									:nombre2,
+									:apellido1,
+									:apellido2,
+									:FechaNac,
+									:email,
+									:telefono,
+									:cedula,
+									:estcivil,
+									:genero,
 									:descuento)");
 
 		$stmt->bindParam(":nombre1", 	$datos["PrimerNombre"], 		PDO::PARAM_STR);
@@ -260,7 +247,7 @@ class ModeloPagomes
 /*
  * Selector de funciones para cargar los Selects en cascada
  *
- 
+
 $funcion = filter_input(INPUT_GET, 'caso');
 
 switch ($funcion){

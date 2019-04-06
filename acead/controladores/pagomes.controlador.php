@@ -11,69 +11,7 @@ class ControladorPagomes
 		return $respuesta;
 	}
 
-	/*=============================================	EDITAR ALUMNO	=============================================
-
-	static public function ctrEditarPagomes()
-	{
-		if(isset($_POST["editarAlumno"]))
-		{
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre1"]))
-			{
-				$tabla = "tbl_alumnos";
-				$datos = array(	 "Id_Alumno" 			=> 				$_POST["editarAlumno"]		,
-								 "PrimerNombre" 		=> strtoupper(	$_POST["editarNombre1"]		),
-								 "PrimerApellido"		=> strtoupper(	$_POST["editarApellido1"]	),
-								 "SegundoNombre"		=> strtoupper(	$_POST["editarNombre2"]		),
-								 "SegundoApellido"		=> strtoupper(	$_POST["editarApellido2"]	),
-								 "CorreoElectronico" 	=> 				$_POST["editarEmail"]		,
-								 "Telefono" 			=> 				$_POST["editarTelefono"]	,
-								 "Cedula" 				=> 				$_POST["editarCedula"]		,
-								 "Id_EstadoCivil" 		=> 				$_POST["editarEstCivil"]	,
-								 "Id_Genero" 			=> 				$_POST["editarGenero"]		,
-								 "Id_Descuento" 		=> 				$_POST["editarDescuento"]	);
-				$respuesta = ModeloPagomes::mdlEditarAlumnoPagomes($tabla, $datos);
-				if($respuesta == "ok")
-				{
-					echo'<script>
-					swal({
-						  type: "success",
-						  title: "El Alumno ha sido editado correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar",
-						  closeOnConfirm: false
-						  }).then((result) => {
-									if (result.value) {
-
-									window.location = "pagomes";
-
-									}
-								})
-
-					</script>';
-				}
-			}
-			else
-			{
-				echo'<script>
-					swal({
-							type: "error",
-							title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
-							showConfirmButton: true,
-							confirmButtonText: "Cerrar",
-							closeOnConfirm: false
-							}).then((result) => 
-							{
-							if (result.value) 
-							{
-							window.location = "pagomes";
-							}
-						})
-					</script>';
-			}
-		}
-	}*/
-
-/*=====================================================================================================================================================		INGRESAR PAGO DE MENSUALIDAD	===========================================================================================================================================================*/
+/*================== INGRESO DE PAGO DE LA MENSUALIDAD  =================*/
 
 	static public function ctrIngresoPagomes()
 	{
@@ -82,17 +20,12 @@ class ControladorPagomes
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre1"]))
 			{
 				$tabla = "tbl_alumnos";
-				$datos = array(	 "Id_Alumno" 			=> 				$_POST["editarAlumno"]		,
-								 "PrimerNombre" 		=> strtoupper(	$_POST["editarNombre1"]		),
-								 "PrimerApellido"		=> strtoupper(	$_POST["editarApellido1"]	),
-								 "SegundoNombre"		=> strtoupper(	$_POST["editarNombre2"]		),
-								 "SegundoApellido"		=> strtoupper(	$_POST["editarApellido2"]	),
-								 "CorreoElectronico" 	=> 				$_POST["editarEmail"]		,
-								 "Telefono" 			=> 				$_POST["editarTelefono"]	,
-								 "Cedula" 				=> 				$_POST["editarCedula"]		,
-								 "Id_EstadoCivil" 		=> 				$_POST["editarEstCivil"]	,
-								 "Id_Genero" 			=> 				$_POST["editarGenero"]		,
-								 "Id_Descuento" 		=> 				$_POST["editarDescuento"]	);
+				$datos = array(	 "Id_Alumno" =>$_POST["editarAlumno"],
+								         "PrimerNombre"	=> strtoupper($_POST["editarNombre1"]),
+								         "PrimerApellido" => strtoupper($_POST["editarApellido1"]),
+								         "Id_Descuento" => $_POST["editarDescuento"]);
+												 
+
 				$respuesta = ModeloPagomes::mdlPagomesIngreso($tabla, $datos);
 				if($respuesta == "ok")
 				{
@@ -123,9 +56,9 @@ class ControladorPagomes
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar",
 							closeOnConfirm: false
-							}).then((result) => 
+							}).then((result) =>
 							{
-							if (result.value) 
+							if (result.value)
 							{
 							window.location = "pagomes";
 							}
@@ -156,7 +89,7 @@ class ControladorPagomes
 					  confirmButtonText: "Cerrar",
 					  closeOnConfirm: false
 					  }).then((result) => {
-								if (result.value) 
+								if (result.value)
 								{
 								window.location = "pagomes";
 								}

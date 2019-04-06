@@ -1,6 +1,6 @@
 
 /*=============================================
-EDITAR ALUMNOS
+INSERTAR PAGO DE MENSUALIDAD
 =============================================*/
 
 $(".tablas").on("click", ".btnEditarAlumno", function(){
@@ -25,15 +25,7 @@ $(".tablas").on("click", ".btnEditarAlumno", function(){
                         //alert(respuesta);
 			$("#editarAlumno")   .val(respuesta["Id_Alumno"]         );
 			$("#editarNombre1")  .val(respuesta["PrimerNombre"]      );
-			$("#editarNombre2")  .val(respuesta["SegundoNombre"]     );
 			$("#editarApellido1").val(respuesta["PrimerApellido"]    );
-			$("#editarApellido2").val(respuesta["SegundoApellido"]   );
-			//$("#editarFechaNac") .val(respuesta["FechaNacimiento"]   );
-			$("#editarTelefono") .val(respuesta["Telefono"]          );
-			$("#editarCedula")   .val(respuesta["Cedula"]            );
-			$("#editarEmail")    .val(respuesta["CorreoElectronico"] );
-			$("#editarEstCivil") .val(respuesta["Id_estadocivil"]    );
-			$("#editarGenero")   .val(respuesta["Id_genero"]         );
       $("#editarDescuento").val(respuesta["Id_Descuento"]      );
 		},
         error: function(xhr, status)
@@ -43,37 +35,3 @@ $(".tablas").on("click", ".btnEditarAlumno", function(){
 	});
 
 })
-
-
-
-/*=============================================
-ELIMINAR ALUMNO
-=============================================*/
-$(".tablas").on("click", ".btnEliminarAlumno", function(){
-
-  var idAlumno = $(this).attr("idAlumno");
-
-
-  swal({
-    title: '¿Está seguro de borrar el alumno?',
-    text: "¡Si no lo está puede cancelar la accíón!",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Si, borrar alumno!'
-  }).then((result)=>{
-
-    if(result.value){
-
-
-      window.location = "index.php?ruta=alumnos&idAlumno="+idAlumno;
-
-
-    }
-
-  })
-
-})
-
