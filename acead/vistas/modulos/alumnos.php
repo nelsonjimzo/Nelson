@@ -211,7 +211,7 @@ MODAL AGREGAR ALUMNO
 
                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
 
-                    <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Telefono" minlength="8" maxlength="15" pattern="[0-9]{8}">
+                    <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="TELÉFONO" minlength="8" maxlength="15" pattern="[0-9]{8}">
 
                   </div>
 
@@ -225,7 +225,7 @@ MODAL AGREGAR ALUMNO
 
                     <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
 
-                    <input type="text" class="form-control input-lg" name="nuevoCedula" placeholder="Numero de Identidad" minlength="8" maxlength="13" pattern="[0-9]{13}">
+                    <input type="text" class="form-control input-lg" name="nuevoCedula" placeholder="NÚMERO DE IDENTIDAD" minlength="8" maxlength="13" pattern="[0-9]{13}">
 
                   </div>
 
@@ -255,7 +255,7 @@ MODAL AGREGAR ALUMNO
 
                 <span class="input-group-addon"><i class="fa fa-at"></i></span>
 
-                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Correo Electronico" required>
+                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="CORREO ELECTRÓNICO" required>
 
               </div>
 
@@ -305,6 +305,32 @@ MODAL AGREGAR ALUMNO
                   $genero = ControladorUsuarios::ctrCargarSelectGenero();
                   foreach ($genero as $key => $value) {
                     echo "<option value='".$value['Id_Genero']."'>".$value['Descripcion']."</option>";
+                  }
+                  ?>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA SELECCIONAR EL TIPO DE DDESCUENTO -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-money"></i></span>
+
+                <select class="form-control input-lg" name="nuevoDescuento">
+
+                  <option value="">Seleccionar Tipo de descuento</option>
+
+                  <?php
+
+                  $descuento = ControladorAlumnos::ctrCargarSelectDescuento();
+                  foreach ($descuento as $key => $value) {
+                    echo "<option value='".$value['Id_Descuento']."'>".$value['Descuento']."</option>";
                   }
                   ?>
 

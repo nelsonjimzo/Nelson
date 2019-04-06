@@ -1,45 +1,75 @@
-/*=============================================     MOSTRAR ALUMNOS     =============================================*/
+/*=============================================     MOSTRAR ALUMNOS     =============================================
+*/
+$(".tablas").on("click", ".btnCobroMatricula", function(){
 
-$(".tablas").on("click", ".btnCobroMatricula", function()
-{
+  var idAlumno = $(this).attr("idAlumno");
 
-  var idAlumno  = $(this).attr("idAlumno");
-  var datos     = new FormData();
+  var datos = new FormData();
+
   datos.append("idAlumno", idAlumno);
 
   $.ajax({
 
-    url:          "ajax/cobromatricula.ajax.php",
-    method:       "POST",
-    data:         datos,
-    cache:        false,
-    contentType:  false,
-    processData:  false,
-    dataType:     "json",
-    success: function(respuesta)
-    {
-     //alert(respuesta);
+    url:"ajax/alumnos.ajax.php",
+    //url:"ajax/cobrormatricula.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function(respuesta){
+
+                        //alert(respuesta);
       $("#editarAlumno").val(respuesta["Id_Alumno"]);
       $("#editarNombre1").val(respuesta["PrimerNombre"]);
-      /*$("#editarNombre2").val(respuesta["SegundoNombre"]);
       $("#editarApellido1").val(respuesta["PrimerApellido"]);
-      $("#editarApellido2").val(respuesta["SegundoApellido"]);
-      $("#editarFechaNac").val(respuesta["FechaNacimiento"]);
-      $("#editarTelefono").val(respuesta["Telefono"]);
-      $("#editarCedula").val(respuesta["Cedula"]);
-      $("#editarEmail").val(respuesta["CorreoElectronico"]);
-      $("#editarEstCivil").val(respuesta["Id_estadocivil"]);
-      $("#editarGenero").val(respuesta["Id_genero"]);*/
+      
+
+
     },
-                error: function(xhr, status)
-                {
+                error: function(xhr, status){
                     alert("ERROR: " + xhr + " >> " + status);
                 }
 
   });
 
 })
-/*=============================================     EDITAR COBRO DE MATRICULA       =============================================*/
+/*
+$(".tablas").on("click", ".btnCobroMatricula", function()
+{
+  var idAlumno = $(this).attr("idAlumno");
+  var datos = new FormData();
+  datos.append("idAlumno", idAlumno);
+  $.ajax(
+  {
+    url:"ajax/mensualidad.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function(respuesta)
+    {                 //alert(respuesta);
+      $("#editarAlumno").val(respuesta["Id_Alumno"]);
+      $("#editarNombre1").val(respuesta["PrimerNombre"]);
+      //$("#editarNombre2").val(respuesta["SegundoNombre"]);
+      $("#editarApellido1").val(respuesta["PrimerApellido"]);
+      //$("#editarApellido2").val(respuesta["SegundoApellido"]);
+      //$("#editarFechaNac").val(respuesta["FechaNacimiento"]);
+      //$("#editarTelefono").val(respuesta["Telefono"]);
+      //$("#editarCedula").val(respuesta["Cedula"]);
+      //$("#editarEmail").val(respuesta["CorreoElectronico"]);
+      //$("#editarEstCivil").val(respuesta["Id_estadocivil"]);
+      //$("#editarGenero").val(respuesta["Id_genero"]);
+    },
+                error: function(xhr, status)
+                {         alert("ERROR: " + xhr + " >> " + status);   }
+
+  });
+})*/
+/*=============================================     EDITAR COBRO DE MATRICULA       =============================================
 
 $(".tablas").on("click", ".btn-primary", function()
 {
@@ -56,21 +86,16 @@ $(".tablas").on("click", ".btn-primary", function()
 		processData:  false,
 		dataType:     "json",
 		success: function(respuesta)
-    {
-                        //alert(respuesta);
+    {         //alert(respuesta);
 			$("#editarIdCobro").val(respuesta["Id_Cobro"]);
+      $("#editarIdAlumno").val(respuesta["Id_Alumno"]);
 			$("#editarTotalMatricula").val(respuesta["TotalMatricula"]);
-
 		}
-                error: function(xhr, status)
-                {
-                    alert("ERROR: " + xhr + " >> " + status);
-                }
-
+          error: function(xhr, status)
+          {         alert("ERROR: " + xhr + " >> " + status);       }
 	});
-
 })
-
+*/
 
 /*=============================================
 ELIMINAR MODALIDAD

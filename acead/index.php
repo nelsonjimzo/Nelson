@@ -10,6 +10,8 @@ require_once "controladores/matricula.controlador.php";
 require_once "controladores/cambiopass.controlador.php";
 require_once "controladores/configuracion.controlador.php";
 require_once "controladores/cobromatricula.controlador.php";
+require_once "controladores/mensualidad.controlador.php";
+require_once "controladores/pagomes.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/alumnos.modelo.php";
@@ -19,8 +21,11 @@ require_once "modelos/clientes.modelo.php";
 require_once "modelos/matricula.modelo.php";
 require_once "modelos/cambiopass.modelo.php";
 require_once "modelos/configuracion.modelo.php";
-require_once "modelos/cobromatricula.modelo.php";
 
+require_once "modelos/pagomes.modelo.php";
+require_once "modelos/cobromatricula.modelo.php";
+require_once "modelos/mensualidad.modelo.php";
+require_once "modelos/descuentomensualidad.modelo.php";
 //require_once "../PHPMailer/PHPMailerAutoload.php";
 
 $plantilla = new ControladorPlantilla();

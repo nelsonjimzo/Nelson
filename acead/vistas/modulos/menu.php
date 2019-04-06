@@ -18,6 +18,43 @@
 					<i class="fa fa-users"></i>
 					<span>Alumnos</span>
 				</a>
+                            <ul class="treeview-menu">
+					<li>
+
+						<a href="historialacademico">
+
+							<i class="fa fa-circle-o"></i>
+							<span>Historial Academico</span>
+
+						</a>
+
+					</li>
+
+<!--					<li>
+
+						<a href="modalidades">
+
+							<i class="fa fa-circle-o"></i>
+							<span>Modalidades y Clases</span>
+
+						</a>
+
+					</li>
+
+					<li>
+
+						<a href="seccion">
+
+							<i class="fa fa-circle-o"></i>
+							<span>Secciones</span>
+
+						</a>
+
+					</li>-->
+
+				</ul>
+
+
 			</li>
 			<li class="treeview">
 				<a href="gestionacademica">
@@ -37,7 +74,7 @@
 					<li>
 						<a href="modalidades">
 							<i class="fa fa-circle-o"></i>
-							<span>Modalidades y Clases</span>
+							<span>Administración</span>
 						</a>
 					</li>
 					<li>
@@ -48,13 +85,37 @@
 					</li>
 				</ul>
 			</li>
-			<li>
-					<a href="cobromatricula">
+
+            <li>
+				<a href="registracalificaciones">
+					<i class="fa fa-pencil"></i>
+					<span>Registro de Calificaciones</span>
+
+				</a>
+			</li>
+
+
+			<li>	
+				<a href="cobromatricula">
 					<i class="fa fa-calendar-check-o"></i>
 					<span>Pago de Matricula</span>
 				</a>
 			</li>
-		
+			
+			<li>	
+				<a href="pagomes">
+					<i class="fa fa-square"></i>
+					<span>Pago mensual</span>
+				</a>
+			</li>
+
+			<li>
+					<a href="mensualidad">
+					<i class="fa fa-calendar-check-o"></i>
+					<span>Pago de mensulidad</span>
+				</a>
+			</li>
+
 			<li>
 				<a href="configuracion">
 					<i class="fa fa-cog"></i>

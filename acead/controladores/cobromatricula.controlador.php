@@ -3,10 +3,7 @@
 class ControladorCobroMatricula
 {
 
-  /*=============================================
-  MOSTRAR ALUMNOS
-  =============================================*/
-
+  /*=============================================  MOSTRAR ALUMNOS  =============================================*/
   static public function ctrMostrarCobroMatricula($item, $valor)
   {
     $tabla 		= "tbl_alumnos";
@@ -14,18 +11,20 @@ class ControladorCobroMatricula
     return $respuesta;
   }
 
-  /*=============================================
-	REGISTRO DE COBRO
-	=============================================*/
+
+  /*=============================================	REGISTRO DE COBRO	=============================================*/
 
 	static public function ctrCrearCobroMatricula()
 	{
 		if(isset($_POST["nuevoTotalMatricula"]))
 		{
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoTotalMatricula"]))
+			//if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoTotalMatricula"]))
+			if($_POST["nuevoTotalMatricula"])
 			{
 				$tabla = "tbl_cobromatricula";
-				$datos = array("TotalMatricula" => strtoupper($_POST["nuevoTotalMatricula"]));
+				$datos = array(	"Id_Cobro" => null,
+								"Id_Alumno" => strtoupper($_POST["editarAlumno"]),
+								"TotalMatricula" => strtoupper($_POST["nuevoTotalMatricula"]));
 				//$respuesta = ModeloCobroMatricula::mdlCobroMatricula($tabla, $datos);
 				$respuesta = ModeloCobroMatricula::mdlIngresarMatriculaCobrada($tabla, $datos);
 				//cambio de mdl

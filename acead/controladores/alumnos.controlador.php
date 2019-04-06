@@ -17,15 +17,16 @@ class ControladorAlumnos{
 
 
 				$datos = array("PrimerNombre" => strtoupper($_POST["nuevoNombre1"]),
-										 "PrimerApellido"	=> strtoupper( $_POST["nuevoApellido1"]),
-										 "SegundoNombre"	=> strtoupper($_POST["nuevoNombre2"]),
-										 "SegundoApellido"	=> strtoupper($_POST["nuevoApellido2"]),
-										 "FechaNacimiento" => $_POST["nuevoFechaNac"],
-										 "CorreoElectronico" => $_POST["nuevoEmail"],
-										 "Telefono" => $_POST["nuevoTelefono"],
-										 "Cedula" => $_POST['nuevoCedula'],
-										 "Id_EstadoCivil" => $_POST["nuevoEstCivil"],
-										 "Id_Genero" => $_POST["nuevoGenero"]);
+										 "PrimerApellido"		=> strtoupper( $_POST["nuevoApellido1"]),
+										 "SegundoNombre"		=> strtoupper($_POST["nuevoNombre2"]),
+										 "SegundoApellido"		=> strtoupper($_POST["nuevoApellido2"]),
+										 "FechaNacimiento" 		=> $_POST["nuevoFechaNac"],
+										 "CorreoElectronico" 	=> $_POST["nuevoEmail"],
+										 "Telefono" 			=> $_POST["nuevoTelefono"],
+										 "Cedula" 				=> $_POST['nuevoCedula'],
+										 "Id_EstadoCivil" 		=> $_POST["nuevoEstCivil"],
+										 "Id_Genero" 			=> $_POST["nuevoGenero"],
+										 "Id_Descuento" 		=> $_POST["nuevoDescuento"]);
 
 
 				$respuesta = ModeloAlumnos::mdlIngresarAlumno($tabla, $datos);
@@ -119,16 +120,18 @@ class ControladorAlumnos{
 
 				$tabla = "tbl_alumnos";
 
-				$datos = array("Id_Alumno" => $_POST["editarAlumno"],
-										 "PrimerNombre" => strtoupper($_POST["editarNombre1"]),
-										 "PrimerApellido"	=> strtoupper($_POST["editarApellido1"]),
-										 "SegundoNombre"	=> strtoupper($_POST["editarNombre2"]),
-										 "SegundoApellido"	=> strtoupper($_POST["editarApellido2"]),
-										 "CorreoElectronico" => $_POST["editarEmail"],
-										 "Telefono" => $_POST["editarTelefono"],
-										 "Cedula" => $_POST["editarCedula"],
-										 "Id_EstadoCivil" => $_POST["editarEstCivil"],
-										 "Id_Genero" => $_POST["editarGenero"]);
+				$datos = array(	 "Id_Alumno" 			=> 				$_POST["editarAlumno"]		,
+								 "PrimerNombre" 		=> strtoupper(	$_POST["editarNombre1"]		),
+								 "PrimerApellido"		=> strtoupper(	$_POST["editarApellido1"]	),
+								 "SegundoNombre"		=> strtoupper(	$_POST["editarNombre2"]		),
+								 "SegundoApellido"		=> strtoupper(	$_POST["editarApellido2"]	),
+								 "CorreoElectronico" 	=> 				$_POST["editarEmail"]		,
+								 "Telefono" 			=> 				$_POST["editarTelefono"]	,
+								 "Cedula" 				=> 				$_POST["editarCedula"]		,
+								 "Id_EstadoCivil" 		=> 				$_POST["editarEstCivil"]	,
+								 "Id_Genero" 			=> 				$_POST["editarGenero"]		,
+								 "Id_Descuento" 		=> 				$_POST["editarDescuento"]	);
+
 
 				$respuesta = ModeloAlumnos::mdlEditarAlumno($tabla, $datos);
 
@@ -251,5 +254,18 @@ class ControladorAlumnos{
 
 	}
 
+	/*=============================================
+	MOSTRAR DESCUENTO
+	=============================================*/
+
+	static public function ctrCargarSelectDescuento(){
+
+		$tabla = "tbl_descuento";
+
+		$respuesta = ModeloAlumnos::mdlCargarSelect($tabla);
+
+		return $respuesta;
+
+	}
 
 }

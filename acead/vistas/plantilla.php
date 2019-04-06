@@ -91,15 +91,17 @@ CUERPO DOCUMENTO
     /*=============================================
     CONTENIDO
     =============================================*/
-    if(isset($_GET["ruta"])){
+    if(isset($_GET["ruta"]))
+    {
       if($_GET["ruta"] == "inicio" ||
          $_GET["ruta"] == "usuarios" ||
          $_GET["ruta"] == "alumnos" ||
          $_GET["ruta"] == "autoregistro" ||
          $_GET["ruta"] == "gestionacademica" ||
          $_GET["ruta"] == "modalidades" ||
+         $_GET["ruta"] == "orientaciones" ||
          $_GET["ruta"] == "seccion" ||
-         $_GET["ruta"] == "clientes" ||
+         $_GET["ruta"] == "clases" ||
          $_GET["ruta"] == "ventas" ||
          $_GET["ruta"] == "crear-venta" ||
          $_GET["ruta"] == "reportes" ||
@@ -108,12 +110,12 @@ CUERPO DOCUMENTO
          $_GET["ruta"] == "cambiapasspreg" ||
          $_GET["ruta"] == "cambiocontrasena" ||
          $_GET["ruta"] == "recupera" ||
-
-         $_GET["ruta"] == "cobromatricula" ||
-         $_GET["ruta"] == "pagos" ||
-         $_GET["ruta"] == "deudores" ||
-
+         $_GET["ruta"] == "historialacademico" ||
          $_GET["ruta"] == "configuracion" ||
+         $_GET["ruta"] == "registracalificaciones" ||
+         $_GET["ruta"] == "cobromatricula" ||
+         $_GET["ruta"] == "mensualidad" ||
+         $_GET["ruta"] == "pagomes" ||
          $_GET["ruta"] == "salir")
       {
         include "modulos/".$_GET["ruta"].".php";
@@ -165,7 +167,11 @@ CUERPO DOCUMENTO
 <script src="vistas/js/matricula.js"></script>
 <script src="vistas/js/modalidades.js"></script>
 <script src="vistas/js/configuracion.js"></script>
+<script src="vistas/js/orientaciones.js"></script>
 <script src="vistas/js/cobromatricula.js"></script>
+<script src="vistas/js/mensualidad.js"></script>
+<script src="vistas/js/pagomes.js"></script>
+
 
 </body>
 </html>

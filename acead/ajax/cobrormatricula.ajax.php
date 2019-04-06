@@ -1,10 +1,8 @@
 <?php
 require_once "../controladores/cobromatricula.controlador.php";
 require_once "../modelos/cobromatricula.modelo.php";
-
 //require_once "../controladores/alumnos.controlador.php";
 //require_once "../modelos/alumnos.modelo.php";
-
 /* =============================================
   MOSTRAR ALUMNO
   ============================================= */
@@ -16,21 +14,19 @@ if (isset($_POST["idAlumno"]))
 }
 
 class AjaxCobroMatricula
-
-
 {
     /* =============================================
       INGRESAR COBRO MATRICULA
       ============================================= */
 
-    public $idCobro;
+    public $idAlumno;
     public function ajaxEditarCobroMatricula() 
     {
-        $item       = "Id_Cobro";
-        $valor      =  $this->idCobro;
+        $item       = "Id_Alumno";
+        $valor      =  $this->idAlumno;
         //$respuesta  =  ControladorCobroMatricula::ctrMostrarCobroMatricula($item, $valor);
         //probando cambiar al controlador que edita
-        $respuesta  =  ControladorCobroMatricula::ctrCrearCobroMatricula($item, $valor);
+        $respuesta  =  ControladorCobroMatricula::ctrMostrarCobroMatricula($item, $valor);
         echo json_encode($respuesta);
     }
 }
